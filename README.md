@@ -50,39 +50,47 @@ git --version     # Git 버전 확인
 
 **현재 위치 확인**
 ```bash
-$ pwd
+pwd
 ```
 ```
-결과값 입력
+/Users/leeeunbin2199174
 ```
 
 **목록 확인 (숨김 파일 포함)**
 ```bash
-$ ls -a
+ls -a
 ```
 ```
-결과값 입력
-```
-
-**디렉토리 이동**
-```bash
-$ cd 폴더명
-```
-```
-결과값 입력
+.			.vscode			Music
+..			.zsh_sessions		OrbStack
+.CFUserTextEncoding	Desktop			Pictures
+.docker			Documents		Public
+.orbstack		Downloads		test
+.ssh			Library
+.Trash			Movies
 ```
 
 **디렉토리 생성**
 ```bash
-$ mkdir 폴더명
+mkdir 폴더명
 ```
 ```
-결과값 입력
+(출력 없음) → 정상 생성됨
+```
+
+**디렉토리 이동**
+```bash
+cd 폴더명        # 하위 폴더로 이동
+cd ..           # 상위 폴더로 이동
+```
+```
+leeeunbin2199174@c6r1s6 test % 
+leeeunbin2199174@c6r1s6 ~ % 
 ```
 
 **파일 복사**
 ```bash
-$ cp 파일1 파일2
+cp 원본파일 복사할파일
 ```
 ```
 결과값 입력
@@ -90,7 +98,7 @@ $ cp 파일1 파일2
 
 **파일 이동/이름변경**
 ```bash
-$ mv 파일1 파일2
+mv 원본파일 복사할파일
 ```
 ```
 결과값 입력
@@ -114,7 +122,7 @@ $ cat 파일명
 
 **빈 파일 생성**
 ```bash
-$ touch 파일명
+touch 파일명
 ```
 ```
 결과값 입력
@@ -126,7 +134,7 @@ $ touch 파일명
 
 **권한 확인 (파일)**
 ```bash
-$ ls -l 파일명
+ls -l 파일명
 ```
 ```
 결과값 입력
@@ -134,7 +142,7 @@ $ ls -l 파일명
 
 **권한 변경 (파일)**
 ```bash
-$ chmod 000 파일명
+chmod 000 파일명
 ```
 ```
 결과값 입력
@@ -142,7 +150,7 @@ $ chmod 000 파일명
 
 **권한 변경 후 확인 (파일)**
 ```bash
-$ ls -l 파일명
+ls -l 파일명
 ```
 ```
 결과값 입력
@@ -150,7 +158,7 @@ $ ls -l 파일명
 
 **권한 확인 (디렉토리)**
 ```bash
-$ ls -ld 폴더명
+ls -ld 폴더명
 ```
 ```
 결과값 입력
@@ -158,7 +166,7 @@ $ ls -ld 폴더명
 
 **권한 변경 (디렉토리)**
 ```bash
-$ chmod 000 폴더명
+chmod 000 폴더명
 ```
 ```
 결과값 입력
@@ -166,7 +174,7 @@ $ chmod 000 폴더명
 
 **권한 변경 후 확인 (디렉토리)**
 ```bash
-$ ls -ld 폴더명
+ls -ld 폴더명
 ```
 ```
 결과값 입력
@@ -186,7 +194,7 @@ $ docker --version
 
 **데몬 동작 확인**
 ```bash
-$ docker info
+docker info
 ```
 ```
 결과값 입력
@@ -198,7 +206,7 @@ $ docker info
 
 **이미지 다운로드**
 ```bash
-$ docker pull 이미지명
+docker pull 이미지명
 ```
 ```
 결과값 입력
@@ -206,7 +214,7 @@ $ docker pull 이미지명
 
 **이미지 목록 확인**
 ```bash
-$ docker images
+docker images
 ```
 ```
 결과값 입력
@@ -214,7 +222,7 @@ $ docker images
 
 **컨테이너 실행**
 ```bash
-$ docker run 이미지명
+docker run 이미지명
 ```
 ```
 결과값 입력
@@ -230,7 +238,7 @@ $ docker stop 컨테이너명
 
 **실행 중인 컨테이너 목록**
 ```bash
-$ docker ps
+docker ps
 ```
 ```
 결과값 입력
@@ -238,7 +246,7 @@ $ docker ps
 
 **전체 컨테이너 목록**
 ```bash
-$ docker ps -a
+docker ps -a
 ```
 ```
 결과값 입력
@@ -246,7 +254,7 @@ $ docker ps -a
 
 **로그 확인**
 ```bash
-$ docker logs 컨테이너명
+docker logs 컨테이너명
 ```
 ```
 결과값 입력
@@ -254,7 +262,7 @@ $ docker logs 컨테이너명
 
 **리소스 확인**
 ```bash
-$ docker stats
+docker stats
 ```
 ```
 결과값 입력
@@ -266,7 +274,7 @@ $ docker stats
 
 **hello-world 실행**
 ```bash
-$ docker run hello-world
+docker run hello-world
 ```
 ```
 결과값 입력
@@ -274,7 +282,7 @@ $ docker run hello-world
 
 **ubuntu 컨테이너 실행 및 진입**
 ```bash
-$ docker run -it ubuntu bash
+docker run -it ubuntu bash
 ```
 ```
 결과값 입력
@@ -282,8 +290,8 @@ $ docker run -it ubuntu bash
 
 **ubuntu 내부 명령 수행**
 ```bash
-$ ls
-$ echo "hello"
+ls
+echo "hello"
 ```
 ```
 결과값 입력
@@ -316,7 +324,7 @@ exec   : 실행 중인 컨테이너에 새 프로세스로 진입 → exit 해�
 
 **빌드 명령**
 ```bash
-$ docker build -t 이미지명 .
+docker build -t 이미지명 .
 ```
 ```
 결과값 입력
@@ -324,7 +332,7 @@ $ docker build -t 이미지명 .
 
 **실행 명령**
 ```bash
-$ docker run -d -p 8080:80 이미지명
+docker run -d -p 8080:80 이미지명
 ```
 ```
 결과값 입력
@@ -336,7 +344,7 @@ $ docker run -d -p 8080:80 이미지명
 
 **포트 매핑 확인**
 ```bash
-$ docker ps
+docker ps
 ```
 ```
 결과값 입력
@@ -344,7 +352,7 @@ $ docker ps
 
 **curl 접속 확인**
 ```bash
-$ curl http://localhost:8080
+curl http://localhost:8080
 ```
 ```
 결과값 입력
@@ -361,7 +369,7 @@ $ curl http://localhost:8080
 
 **볼륨 생성**
 ```bash
-$ docker volume create 볼륨명
+docker volume create 볼륨명
 ```
 ```
 결과값 입력
@@ -369,7 +377,7 @@ $ docker volume create 볼륨명
 
 **볼륨 연결 후 컨테이너 실행**
 ```bash
-$ docker run -v 볼륨명:/경로 이미지명
+docker run -v 볼륨명:/경로 이미지명
 ```
 ```
 결과값 입력
@@ -377,7 +385,7 @@ $ docker run -v 볼륨명:/경로 이미지명
 
 **컨테이너 삭제 전 데이터 확인**
 ```bash
-$ docker exec 컨테이너명 cat /경로/파일명
+docker exec 컨테이너명 cat /경로/파일명
 ```
 ```
 결과값 입력
@@ -385,7 +393,7 @@ $ docker exec 컨테이너명 cat /경로/파일명
 
 **컨테이너 삭제**
 ```bash
-$ docker rm 컨테이너명
+docker rm 컨테이너명
 ```
 ```
 결과값 입력
@@ -393,7 +401,7 @@ $ docker rm 컨테이너명
 
 **컨테이너 삭제 후 데이터 확인**
 ```bash
-$ docker run -v 볼륨명:/경로 이미지명 cat /경로/파일명
+docker run -v 볼륨명:/경로 이미지명 cat /경로/파일명
 ```
 ```
 결과값 입력
@@ -414,7 +422,7 @@ $ git config --global user.email "이메일"
 
 **기본 브랜치 설정**
 ```bash
-$ git config --global init.defaultBranch main
+git config --global init.defaultBranch main
 ```
 ```
 결과값 입력
@@ -422,7 +430,7 @@ $ git config --global init.defaultBranch main
 
 **설정 확인**
 ```bash
-$ git config --list
+git config --list
 ```
 ```
 결과값 입력
@@ -430,7 +438,7 @@ $ git config --list
 
 **GitHub 저장소 연동 확인**
 ```bash
-$ git remote -v
+git remote -v
 ```
 ```
 결과값 입력
