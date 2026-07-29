@@ -21,10 +21,10 @@ git --version     # Git 버전 확인
 ```
 
 ## 3. 수행 항목 체크리스트
-- [] **터미널**
-- [] **권한**
-- [] **Docker**
-- [] **Dockerfile**
+- [x] **터미널**
+- [x] **권한**
+- [x] **Docker**
+- [x] **Dockerfile**
 - [] **포트**
 - [] **볼륨**
 - [] **마운트**
@@ -341,15 +341,24 @@ CONTAINER ID   NAME           CPU %     MEM USAGE / LIMIT     MEM %     NET I/O 
 docker run hello-world
 ```
 ```
-결과값 입력
+ieunbin@eunbin-ui-MacBookAir ~ % docker run hello-world
+Unable to find image 'hello-world:latest' locally
+latest: Pulling from library/hello-world
+4f55086f7dd0: Pull complete 
+Digest: sha256:c3cbe1cc1aa588a64951ac6286e0df7b27fe2e6324b1001c619bb358770c0178
+Status: Downloaded newer image for hello-world:latest
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
 ```
 
 **ubuntu 컨테이너 실행 및 진입**
 ```bash
-docker run -it ubuntu bash
+docker run -it ubuntu
 ```
 ```
-결과값 입력
+ieunbin@eunbin-ui-MacBookAir ~ % docker run -it ubuntu
+root@c30ca9fa3f33:/#
 ```
 
 **ubuntu 내부 명령 수행**
@@ -358,14 +367,23 @@ ls
 echo "hello"
 ```
 ```
-결과값 입력
+root@c30ca9fa3f33:/# ls
+bin   dev  home  lib64  mnt  proc  run   srv  tmp  var
+boot  etc  lib   media  opt  root  sbin  sys  usr
+root@c30ca9fa3f33:/# echo "hello"
+hello
 ```
 
-**attach vs exec 차이 정리**
-```
-attach : 컨테이너의 메인 프로세스에 직접 연결 → exit 시 컨테이너 종료
-exec   : 실행 중인 컨테이너에 새 프로세스로 진입 → exit 해도 컨테이너 유지
-```
+**컨테이너 종료/유지(attach vs exec)차이**
+| 구분 | 명령어 | 컨테이너 상태 | 특징 |
+| :--- | :--- | :--- | :--- |
+| **종료** | `exit` | **정지** | 컨테이너 내부 쉘을 종료하며 컨테이너도 함께 정지됨 |
+| **유지** | `Ctrl + P, Q` | **실행 중** | 컨테이너는 살려두고 터미널만 빠져나옴 (Detach) |
+| **진입 (직접)** | `attach` | **실행 중** | 실행 중인 컨테이너의 메인 프로세스에 다시 연결함 |
+| **진입 (도구)** | `exec` | **실행 중** | 실행 중인 컨테이너에 별도의 프로세스를 추가로 실행함 |
+
+attach 후 exit 하면 -> 컨테이너 종료<br>
+exec 후 exit 하면 -> 컨테이너 유지
 
 ---
 
