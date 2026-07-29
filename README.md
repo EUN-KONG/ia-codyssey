@@ -117,7 +117,14 @@ ieunbin@eunbin-ui-MacBookAir ~ % ls
 Applications	Downloads	Music		Public		test3
 Desktop		Library		Pictures	nextjs-blog
 Documents	Movies		Postman		test
-
+ieunbin@eunbin-ui-MacBookAir ~ % mv test test3  
+ieunbin@eunbin-ui-MacBookAir ~ % ls
+Applications	Downloads	Music		Public
+Desktop		Library		Pictures	nextjs-blog
+Documents	Movies		Postman		test3
+ieunbin@eunbin-ui-MacBookAir ~ % cd test3
+ieunbin@eunbin-ui-MacBookAir test3 % ls
+test
 ```
 
 **폴더 삭제**
@@ -125,7 +132,9 @@ Documents	Movies		Postman		test
 rm -r 폴더명
 ```
 ```
-결과값 입력
+ieunbin@eunbin-ui-MacBookAir test3 % rm -r test
+ieunbin@eunbin-ui-MacBookAir test3 % ls
+ieunbin@eunbin-ui-MacBookAir test3 % 
 ```
 
 **빈 파일 생성**
@@ -133,7 +142,11 @@ rm -r 폴더명
 touch 파일명
 ```
 ```
-결과값 입력
+ieunbin@eunbin-ui-MacBookAir ~ % touch file
+ieunbin@eunbin-ui-MacBookAir ~ % ls
+Applications	Downloads	Music		Public		test3
+Desktop		Library		Pictures	file
+Documents	Movies		Postman		nextjs-blog
 ```
 
 **파일 내용 확인**
@@ -141,7 +154,9 @@ touch 파일명
 cat 파일명
 ```
 ```
-결과값 입력
+ieunbin@eunbin-ui-MacBookAir ~ % echo "안녕" > file  
+ieunbin@eunbin-ui-MacBookAir ~ % cat file
+안녕
 ```
 
 ---
