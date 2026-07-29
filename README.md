@@ -261,32 +261,40 @@ ubuntu       latest    de7345b16e94   2 weeks ago   100MB
 docker run 이미지명
 ```
 ```
-<img width="984" height="105" alt="image" src="https://github.com/user-attachments/assets/a1791c87-676d-47fd-a01c-f529933555d2" />
-
+ieunbin@eunbin-ui-MacBookAir ~ % docker run ubuntu
+ieunbin@eunbin-ui-MacBookAir ~ % docker run -d ubuntu sleep 300
 ```
-
-**컨테이너 중지**
-```bash
-$ docker stop 컨테이너명
-```
-```
-결과값 입력
-```
+<img width="972" height="147" alt="image" src="https://github.com/user-attachments/assets/0cf0e641-ebf2-409e-ad15-80f7ca106c85" />
 
 **실행 중인 컨테이너 목록**
 ```bash
 docker ps
 ```
 ```
-결과값 입력
+ieunbin@eunbin-ui-MacBookAir ~ % docker ps
+CONTAINER ID   IMAGE     COMMAND       CREATED              STATUS              PORTS     NAMES
+c7ae8682c6a5   ubuntu    "sleep 300"   About a minute ago   Up About a minute             great_ritchie
 ```
+
+**컨테이너 중지**
+```bash
+docker stop 컨테이너명
+```
+```
+ieunbin@eunbin-ui-MacBookAir ~ % docker stop great_ritchie
+great_ritchie
+```
+<img width="970" height="103" alt="image" src="https://github.com/user-attachments/assets/57002971-63a0-4fc0-9a13-028039bf6aad" />
 
 **전체 컨테이너 목록**
 ```bash
 docker ps -a
 ```
 ```
-결과값 입력
+ieunbin@eunbin-ui-MacBookAir ~ % docker ps -a
+CONTAINER ID   IMAGE     COMMAND       CREATED          STATUS                       PORTS     NAMES
+cccb94cb6cc5   ubuntu    "/bin/bash"   32 seconds ago   Exited (0) 31 seconds ago              amazing_goodall
+c7ae8682c6a5   ubuntu    "sleep 300"   13 minutes ago   Exited (137) 3 minutes ago             great_ritchie
 ```
 
 **로그 확인**
@@ -294,7 +302,24 @@ docker ps -a
 docker logs 컨테이너명
 ```
 ```
-결과값 입력
+ieunbin@eunbin-ui-MacBookAir ~ % docker logs keen_feistel
+/docker-entrypoint.sh: /docker-entrypoint.d/ is not empty, will attempt to perform configuration
+/docker-entrypoint.sh: Looking for shell scripts in /docker-entrypoint.d/
+/docker-entrypoint.sh: Launching /docker-entrypoint.d/10-listen-on-ipv6-by-default.sh
+10-listen-on-ipv6-by-default.sh: info: Getting the checksum of /etc/nginx/conf.d/default.conf
+10-listen-on-ipv6-by-default.sh: info: Enabled listen on IPv6 in /etc/nginx/conf.d/default.conf
+/docker-entrypoint.sh: Sourcing /docker-entrypoint.d/15-local-resolvers.envsh
+/docker-entrypoint.sh: Launching /docker-entrypoint.d/20-envsubst-on-templates.sh
+/docker-entrypoint.sh: Launching /docker-entrypoint.d/30-tune-worker-processes.sh
+/docker-entrypoint.sh: Configuration complete; ready for start up
+2026/07/29 17:44:53 [notice] 1#1: using the "epoll" event method
+2026/07/29 17:44:53 [notice] 1#1: nginx/1.31.3
+2026/07/29 17:44:53 [notice] 1#1: built by gcc 14.2.0 (Debian 14.2.0-19) 
+2026/07/29 17:44:53 [notice] 1#1: OS: Linux 5.15.49-linuxkit
+2026/07/29 17:44:53 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2026/07/29 17:44:53 [notice] 1#1: start worker processes
+2026/07/29 17:44:53 [notice] 1#1: start worker process 29
+2026/07/29 17:44:53 [notice] 1#1: start worker process 30
 ```
 
 **리소스 확인**
@@ -302,7 +327,9 @@ docker logs 컨테이너명
 docker stats
 ```
 ```
-결과값 입력
+ieunbin@eunbin-ui-MacBookAir ~ % docker stats
+CONTAINER ID   NAME           CPU %     MEM USAGE / LIMIT     MEM %     NET I/O       BLOCK I/O     PIDS
+9d3031be6b1f   keen_feistel   0.00%     3.367MiB / 3.842GiB   0.09%     1.23kB / 0B   0B / 12.3kB   3
 ```
 
 ---
