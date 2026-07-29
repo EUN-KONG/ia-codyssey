@@ -53,7 +53,8 @@ git --version     # Git 버전 확인
 pwd
 ```
 ```
-/Users/leeeunbin2199174
+ieunbin@eunbin-ui-MacBookAir ~ % pwd
+/Users/ieunbin
 ```
 
 **목록 확인 (숨김 파일 포함)**
@@ -61,11 +62,12 @@ pwd
 ls -a
 ```
 ```
+ieunbin@eunbin-ui-MacBookAir ~ % ls -a
 .			.vscode			Music
 ..			.zsh_sessions		OrbStack
 .CFUserTextEncoding	Desktop			Pictures
 .docker			Documents		Public
-.orbstack		Downloads		test
+.orbstack		Downloads		
 .ssh			Library
 .Trash			Movies
 ```
@@ -75,7 +77,11 @@ ls -a
 mkdir 폴더명
 ```
 ```
-(출력 없음) → 정상 생성됨
+ieunbin@eunbin-ui-MacBookAir ~ % mkdir test
+ieunbin@eunbin-ui-MacBookAir ~ % ls
+Applications	Downloads	Music		Public
+Desktop		Library		Pictures	nextjs-blog
+Documents	Movies		Postman		test
 ```
 
 **디렉토리 이동**
@@ -84,8 +90,9 @@ cd 폴더명        # 하위 폴더로 이동
 cd ..           # 상위 폴더로 이동
 ```
 ```
-leeeunbin2199174@c6r1s6 test % 
-leeeunbin2199174@c6r1s6 ~ % 
+ieunbin@eunbin-ui-MacBookAir ~ % cd test
+ieunbin@eunbin-ui-MacBookAir test % cd ..
+ieunbin@eunbin-ui-MacBookAir ~ %
 ```
 
 **폴더 복사**
@@ -93,7 +100,11 @@ leeeunbin2199174@c6r1s6 ~ %
 cp -r 원본폴더 복사할폴더
 ```
 ```
-(출력 없음) → 정상 생성됨
+ieunbin@eunbin-ui-MacBookAir ~ % cp -r test test2 
+ieunbin@eunbin-ui-MacBookAir ~ % ls
+Applications	Downloads	Music		Public		test2
+Desktop		Library		Pictures	nextjs-blog
+Documents	Movies		Postman		test
 ```
 
 **폴더 이동/이름변경**
@@ -101,7 +112,12 @@ cp -r 원본폴더 복사할폴더
 mv 원본폴더 이동/이름변경할폴더
 ```
 ```
-결과값 입력
+ieunbin@eunbin-ui-MacBookAir ~ % mv test2 test3
+ieunbin@eunbin-ui-MacBookAir ~ % ls
+Applications	Downloads	Music		Public		test3
+Desktop		Library		Pictures	nextjs-blog
+Documents	Movies		Postman		test
+
 ```
 
 **폴더 삭제**
