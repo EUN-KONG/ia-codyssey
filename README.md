@@ -163,52 +163,48 @@ ieunbin@eunbin-ui-MacBookAir ~ % cat file
 
 ## 2. 권한 실습
 
-**권한 확인 (파일)**
+**권한 확인**
 ```bash
 ls -l 파일명
 ```
 ```
-결과값 입력
+ieunbin@eunbin-ui-MacBookAir ~ % mkdir directory
+ieunbin@eunbin-ui-MacBookAir ~ % touch file.txt
+ieunbin@eunbin-ui-MacBookAir ~ % ls -l
+drwxr-xr-x   2 ieunbin  staff    64  7 29 21:38 directory
+-rw-r--r--   1 ieunbin  staff     0  7 29 21:33 file.txt
 ```
 
-**권한 변경 (파일)**
+**권한 변경**
 ```bash
 chmod 000 파일명
 ```
 ```
-결과값 입력
+ieunbin@eunbin-ui-MacBookAir ~ % chmod 644 directory
+ieunbin@eunbin-ui-MacBookAir ~ % chmod 777 file.txt
 ```
 
-**권한 변경 후 확인 (파일)**
+**권한 변경 후 확인**
 ```bash
 ls -l 파일명
 ```
 ```
-결과값 입력
+ieunbin@eunbin-ui-MacBookAir ~ % ls -l directory
+drw-r--r--   2 ieunbin  staff    64  7 29 21:38 directory
+ieunbin@eunbin-ui-MacBookAir ~ % ls -l file.txt
+-rwxrwxrwx   1 ieunbin  staff     0  7 29 21:33 file.txt
 ```
 
-**권한 확인 (디렉토리)**
-```bash
-ls -ld 폴더명
+**권한 변경 전/후 비교**
+```
+directory
+- 변경 전:drwxr-xr-x 
+- 변경 후:drw-r--r-- 
 ```
 ```
-결과값 입력
-```
-
-**권한 변경 (디렉토리)**
-```bash
-chmod 000 폴더명
-```
-```
-결과값 입력
-```
-
-**권한 변경 후 확인 (디렉토리)**
-```bash
-ls -ld 폴더명
-```
-```
-결과값 입력
+file.txt
+- 변경 전:-rw-r--r-- 
+- 변경 후:-rwxrwxrwx
 ```
 
 ---
