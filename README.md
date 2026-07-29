@@ -236,7 +236,14 @@ docker info
 docker pull 이미지명
 ```
 ```
-결과값 입력
+ieunbin@eunbin-ui-MacBookAir ~ % docker pull ubuntu
+Using default tag: latest
+latest: Pulling from library/ubuntu
+ed819469700f: Pull complete 
+a3679419df18: Pull complete 
+Digest: sha256:3131b4cc82a783df6c9df078f86e01819a13594b865c2cad47bd1bca2b7063bb
+Status: Downloaded newer image for ubuntu:latest
+docker.io/library/ubuntu:latest
 ```
 
 **이미지 목록 확인**
@@ -244,7 +251,9 @@ docker pull 이미지명
 docker images
 ```
 ```
-결과값 입력
+ieunbin@eunbin-ui-MacBookAir ~ % docker images
+REPOSITORY   TAG       IMAGE ID       CREATED       SIZE
+ubuntu       latest    de7345b16e94   2 weeks ago   100MB
 ```
 
 **컨테이너 실행**
@@ -252,7 +261,8 @@ docker images
 docker run 이미지명
 ```
 ```
-결과값 입력
+<img width="984" height="105" alt="image" src="https://github.com/user-attachments/assets/a1791c87-676d-47fd-a01c-f529933555d2" />
+
 ```
 
 **컨테이너 중지**
