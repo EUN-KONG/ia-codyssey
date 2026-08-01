@@ -486,9 +486,14 @@ exec 후 exit 하면 -> 컨테이너 유지
 
 ## 6. 커스텀 이미지 제작
 ieunbin@eunbin-ui-MacBookAir my-nginx % open -e Dockerfile
-<img width="418" height="172" alt="image" src="https://github.com/user-attachments/assets/5e1a6ad4-05d5-4910-aadd-65ee90636353" />
+<img width="360" height="406" alt="image" src="https://github.com/user-attachments/assets/1745592c-5e2b-4a12-9679-5515cdc056aa" />
 
 
+ieunbin@eunbin-ui-MacBookAir my-nginx % open -e index.html
+<img width="372" height="253" alt="image" src="https://github.com/user-attachments/assets/b12bb077-69b6-4cf1-bd9a-93621c92e3bb" />
+
+ieunbin@eunbin-ui-MacBookAir my-nginx % open -e nginx.conf
+<img width="391" height="147" alt="image" src="https://github.com/user-attachments/assets/a6dc7b8c-a485-4fe5-ae24-6a8838003662" />
 
 **선택한 베이스 이미지**
 ```
