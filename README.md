@@ -649,7 +649,7 @@ echo "내용" > 경로/파일명
 / # echo "볼륨 테스트 데이터" > /data/test.txt
 ```
 
-**컨테이너 삭제 전 데이터 확인**
+**데이터 확인**
 ```bash
 docker exec 컨테이너명 cat /경로/파일명
 ```
@@ -663,15 +663,19 @@ leeeunbin2199174@c3r2s7 ~ % docker exec volume-test cat /data/test.txt
 docker rm 컨테이너명
 ```
 ```
-결과값 입력
+leeeunbin2199174@c3r2s7 ~ % docker rm volume-test  
+volume-test
 ```
 
-**컨테이너 삭제 후 데이터 확인**
+**새 컨테이너로 데이터 살아있는지 확인**
 ```bash
-docker run -v 볼륨명:/경로 이미지명 cat /경로/파일명
+docker run -d -p 호스트포트:컨테이너포트 --name 컨테이너명 -v 볼륨명:컨테이너경로 이미지명
 ```
 ```
-결과값 입력
+leeeunbin2199174@c3r2s7 ~ % docker run -d -p 8090:80 --name volume-test2 -v my-volume://data my-nginx
+a4816a6877fe1d3bc6822f597b4789a42d9c2200364fe3696acc432a21c3dd98
+leeeunbin2199174@c3r2s7 ~ % docker exec volume-test2 cat /data/test.txt
+볼륨 테스트 데이터
 ```
 
 ---
