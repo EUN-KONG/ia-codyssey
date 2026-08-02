@@ -486,26 +486,37 @@ exec 후 exit 하면 -> 컨테이너 유지
 
 ## 6. 커스텀 이미지 제작
 
-leeeunbin2199174@c3r2s7 my-nginx % touch index.html
-leeeunbin2199174@c3r2s7 my-nginx % nano index.html
-<img width="1420" height="410" alt="image" src="https://github.com/user-attachments/assets/d431c69e-69d0-4764-aff7-fdf1c1577a7b" />
-
 **선택한 베이스 이미지**
 ```
 nginx:alpine
 ```
-
 **커스텀 포인트 및 목적**
 ```
 - index.html 교체: 기본 페이지 → 나만의 정적 페이지
 - EXPOSE 80: 사용 포트 명시
 ```
 
+**폴더 만들기**
+```
+leeeunbin2199174@c3r2s7 ~ % mkdir my-nginx
+leeeunbin2199174@c3r2s7 ~ % ls
+Desktop		Documents	Downloads	Library		Movies		Music		my-nginx	OrbStack	Pictures	Public
+leeeunbin2199174@c3r2s7 ~ % cd my-nginx
+
+leeeunbin2199174@c3r2s7 my-nginx %
+```
+
+**정적 파일**
+leeeunbin2199174@c3r2s7 my-nginx % touch index.html
+leeeunbin2199174@c3r2s7 my-nginx % nano index.html
+<img width="1420" height="410" alt="image" src="https://github.com/user-attachments/assets/d431c69e-69d0-4764-aff7-fdf1c1577a7b" />
+
 **Dockerfile**
 ```
 leeeunbin2199174@c3r2s7 my-nginx % touch Dockerfile
 leeeunbin2199174@c3r2s7 my-nginx % nano Dockerfile
-<img width="699" height="202" alt="image" src="https://github.com/user-attachments/assets/a22e0a17-c0cf-4b96-8f66-3a6c2facfaf2" />
+<img width="1398" height="404" alt="image" src="https://github.com/user-attachments/assets/2404ceff-592b-4ace-b01b-5c4c041dc5c0" />
+
 ```
 
 **빌드 명령**
@@ -558,7 +569,6 @@ docker run -d -p 8080:80 이미지명
 leeeunbin2199174@c3r2s7 my-nginx % docker run -d -p 8080:80 --name my-web my-nginx-custom
 6164e947a696048126b8d30531cc9561d7e67a8d23061d988ca81291cd3eb894
 ```
-<img width="386" height="181" alt="image" src="https://github.com/user-attachments/assets/f09a14f1-171a-4483-9038-9a8de6b60820" />
 
 **확인 방법**
 ```bash
@@ -569,6 +579,7 @@ leeeunbin2199174@c3r2s7 my-nginx % docker ps
 CONTAINER ID   IMAGE             COMMAND                   CREATED          STATUS          PORTS                                     NAMES
 6164e947a696   my-nginx-custom   "/docker-entrypoint.…"   21 seconds ago   Up 20 seconds   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   my-web
 ```
+<img width="386" height="181" alt="image" src="https://github.com/user-attachments/assets/f09a14f1-171a-4483-9038-9a8de6b60820" />
 
 ---
 
