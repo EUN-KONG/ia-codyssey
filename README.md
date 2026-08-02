@@ -517,9 +517,8 @@ leeeunbin2199174@c3r2s7 my-nginx % nano index.html
 ```
 leeeunbin2199174@c3r2s7 my-nginx % touch Dockerfile
 leeeunbin2199174@c3r2s7 my-nginx % nano Dockerfile
-<img width="1398" height="404" alt="image" src="https://github.com/user-attachments/assets/2404ceff-592b-4ace-b01b-5c4c041dc5c0" />
-
 ```
+<img width="1398" height="404" alt="image" src="https://github.com/user-attachments/assets/2404ceff-592b-4ace-b01b-5c4c041dc5c0" />
 
 **빌드 명령**
 ```bash
@@ -617,7 +616,11 @@ leeeunbin2199174@c3r2s7 my-nginx % curl http://localhost:8080
 docker volume create 볼륨명
 ```
 ```
-결과값 입력
+leeeunbin2199174@c3r2s7 ~ % docker volume create my-volume
+my-volume
+leeeunbin2199174@c3r2s7 ~ % docker volume ls
+DRIVER    VOLUME NAME
+local     my-volume
 ```
 
 **볼륨 연결 후 컨테이너 실행**
@@ -625,7 +628,25 @@ docker volume create 볼륨명
 docker run -v 볼륨명:/경로 이미지명
 ```
 ```
-결과값 입력
+leeeunbin2199174@c3r2s7 ~ % docker run -d -p 8090:80 --name volume-test -v my-volume://data my-nginx
+ece2beb9990e17784ca60a31745fd0d816ce79e13b57a0e91c4d95d04afdf76a
+```
+
+**컨테이너 내부 들어가기**
+```bash
+docker exec -it 컨테이너명 sh
+```
+```
+leeeunbin2199174@c3r2s7 ~ % docker exec -it volume-test sh
+/ #
+```
+
+**컨테이너 안에 테스트 파일 만들기**
+```bash
+echo "내용" > 경로/파일명
+```
+```
+/ # echo "볼륨 테스트 데이터" > /data/test.txt
 ```
 
 **컨테이너 삭제 전 데이터 확인**
@@ -633,7 +654,8 @@ docker run -v 볼륨명:/경로 이미지명
 docker exec 컨테이너명 cat /경로/파일명
 ```
 ```
-결과값 입력
+leeeunbin2199174@c3r2s7 ~ % docker exec volume-test cat /data/test.txt
+볼륨 테스트 데이터
 ```
 
 **컨테이너 삭제**
