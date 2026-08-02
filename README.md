@@ -507,8 +507,10 @@ leeeunbin2199174@c3r2s7 my-nginx %
 ```
 
 **정적 파일**
+```
 leeeunbin2199174@c3r2s7 my-nginx % touch index.html
 leeeunbin2199174@c3r2s7 my-nginx % nano index.html
+```
 <img width="1420" height="410" alt="image" src="https://github.com/user-attachments/assets/d431c69e-69d0-4764-aff7-fdf1c1577a7b" />
 
 **Dockerfile**
@@ -570,17 +572,6 @@ leeeunbin2199174@c3r2s7 my-nginx % docker run -d -p 8080:80 --name my-web my-ngi
 6164e947a696048126b8d30531cc9561d7e67a8d23061d988ca81291cd3eb894
 ```
 
-**확인 방법**
-```bash
-docker ps
-```
-```
-leeeunbin2199174@c3r2s7 my-nginx % docker ps
-CONTAINER ID   IMAGE             COMMAND                   CREATED          STATUS          PORTS                                     NAMES
-6164e947a696   my-nginx-custom   "/docker-entrypoint.…"   21 seconds ago   Up 20 seconds   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   my-web
-```
-<img width="386" height="181" alt="image" src="https://github.com/user-attachments/assets/f09a14f1-171a-4483-9038-9a8de6b60820" />
-
 ---
 
 ## 7. 포트 매핑 및 접속 증거
@@ -590,7 +581,9 @@ CONTAINER ID   IMAGE             COMMAND                   CREATED          STAT
 docker ps
 ```
 ```
-결과값 입력
+leeeunbin2199174@c3r2s7 my-nginx % docker ps
+CONTAINER ID   IMAGE      COMMAND                   CREATED              STATUS              PORTS                                     NAMES
+82e0875c8d46   my-nginx   "/docker-entrypoint.…"   About a minute ago   Up About a minute   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   my-cuntainer
 ```
 
 **curl 접속 확인**
@@ -598,13 +591,22 @@ docker ps
 curl http://localhost:8080
 ```
 ```
-결과값 입력
+leeeunbin2199174@c3r2s7 my-nginx % curl http://localhost:8080
+    <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>나의 커스텀 NGINX</title>
+</head>
+<body>
+    <h1>커스텀 Docker 이미지 성공!</h1>
+</body>
+</html>
 ```
 
 **브라우저 접속 화면**
-```
-스크린샷 첨부
-```
+
+<img width="385" height="160" alt="image" src="https://github.com/user-attachments/assets/035e5a55-eeba-4e08-a165-2073eb350821" />
 
 ---
 
