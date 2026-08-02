@@ -490,24 +490,22 @@ leeeunbin2199174@c3r2s7 my-nginx % touch index.html
 leeeunbin2199174@c3r2s7 my-nginx % nano index.html
 <img width="1420" height="410" alt="image" src="https://github.com/user-attachments/assets/d431c69e-69d0-4764-aff7-fdf1c1577a7b" />
 
-leeeunbin2199174@c3r2s7 my-nginx % touch Dockerfile
-leeeunbin2199174@c3r2s7 my-nginx % nano Dockerfile
-<img width="699" height="202" alt="image" src="https://github.com/user-attachments/assets/a22e0a17-c0cf-4b96-8f66-3a6c2facfaf2" />
-
-
 **선택한 베이스 이미지**
 ```
-uduntu:22.04
+nginx:alpine
 ```
 
 **커스텀 포인트 및 목적**
 ```
-결과값 입력
+- index.html 교체: 기본 페이지 → 나만의 정적 페이지
+- EXPOSE 80: 사용 포트 명시
 ```
 
 **Dockerfile**
-```dockerfile
-결과값 입력
+```
+leeeunbin2199174@c3r2s7 my-nginx % touch Dockerfile
+leeeunbin2199174@c3r2s7 my-nginx % nano Dockerfile
+<img width="699" height="202" alt="image" src="https://github.com/user-attachments/assets/a22e0a17-c0cf-4b96-8f66-3a6c2facfaf2" />
 ```
 
 **빌드 명령**
@@ -515,7 +513,41 @@ uduntu:22.04
 docker build -t 이미지명 .
 ```
 ```
-결과값 입력
+leeeunbin2199174@c3r2s7 my-nginx % docker build -t my-nginx-custom .
+[+] Building 6.3s (7/7) FINISHED                                                                                                                                 docker:orbstack
+=> [internal] load build definition from Dockerfile                                                                                                                        0.1s
+=> => transferring dockerfile: 412B                                                                                                                                        0.0s
+=> [internal] load metadata for docker.io/library/nginx:alpine                                                                                                             2.5s
+=> [internal] load .dockerignore                                                                                                                                           0.0s
+=> => transferring context: 2B                                                                                                                                             0.0s
+=> [internal] load build context                                                                                                                                           0.1s
+=> => transferring context: 221B                                                                                                                                           0.0s
+=> [1/2] FROM docker.io/library/nginx:alpine@sha256:4a73073bd557c65b759505da037898b61f1be6cbcc3c2c3aeac22d2a470c1752                                                       2.9s
+=> => resolve docker.io/library/nginx:alpine@sha256:4a73073bd557c65b759505da037898b61f1be6cbcc3c2c3aeac22d2a470c1752                                                       0.1s
+=> => sha256:3cd534fe98c64d68a1f4f1c83abb8d5cba7ecfd7be88e592389929d12e6253da 1.89MB / 1.89MB                                                                              0.5s
+=> => sha256:1d40e3eb3bf4f138de1d67193f2aa5309fcaf343eb5ffadbf5e9439de1eb1ebb 2.50kB / 2.50kB                                                                              0.0s
+=> => sha256:f0ba77f796e57c6fa89ae7f4fdad1665d6fcbd8e3f211535120542b337f9959e 12.32kB / 12.32kB                                                                            0.0s
+=> => sha256:55afa1ecc21d2bb5e5045f32dafee56272ffd89860bac26f6c32123439af26a4 3.85MB / 3.85MB                                                                              0.3s
+=> => sha256:4a73073bd557c65b759505da037898b61f1be6cbcc3c2c3aeac22d2a470c1752 10.33kB / 10.33kB                                                                            0.0s
+=> => sha256:1223f016b4e4a2c21f7c49d4837fbfd47a9da6436b511690ca1e582fc2810d59 627B / 627B                                                                                  0.6s
+=> => extracting sha256:55afa1ecc21d2bb5e5045f32dafee56272ffd89860bac26f6c32123439af26a4                                                                                   0.1s
+=> => sha256:62bec68d7c31c4c8a19d812d84da5f7748e54690c037979945b6c5b6c924b142 957B / 957B                                                                                  0.7s
+=> => extracting sha256:3cd534fe98c64d68a1f4f1c83abb8d5cba7ecfd7be88e592389929d12e6253da                                                                                   0.1s
+=> => sha256:46f977ee452f4399c208714afa034868d6056864f8a0cf3c643ab143dd802c80 404B / 404B                                                                                  0.9s
+=> => sha256:d0008c891db48b5f526d914bce9e8d889fe1a9d1f08291ae03fe97f871726f38 1.21kB / 1.21kB                                                                              0.9s
+=> => extracting sha256:1223f016b4e4a2c21f7c49d4837fbfd47a9da6436b511690ca1e582fc2810d59                                                                                   0.0s
+=> => sha256:390dc935348d8070e695fbaae2a4bb114fb9e69c59f628e7576036ee9d5244c9 1.40kB / 1.40kB                                                                              1.0s
+=> => extracting sha256:62bec68d7c31c4c8a19d812d84da5f7748e54690c037979945b6c5b6c924b142                                                                                   0.0s
+=> => sha256:46519e7231d2eb5604df229beb44d59719a489eaa7aca52982535a010b07a9ed 20.31MB / 20.31MB                                                                            1.4s
+=> => extracting sha256:46f977ee452f4399c208714afa034868d6056864f8a0cf3c643ab143dd802c80                                                                                   0.0s
+=> => extracting sha256:d0008c891db48b5f526d914bce9e8d889fe1a9d1f08291ae03fe97f871726f38                                                                                   0.0s
+=> => extracting sha256:390dc935348d8070e695fbaae2a4bb114fb9e69c59f628e7576036ee9d5244c9                                                                                   0.0s
+=> => extracting sha256:46519e7231d2eb5604df229beb44d59719a489eaa7aca52982535a010b07a9ed                                                                                   0.4s
+=> [2/2] COPY index.html /usr/share/nginx/html/index.html                                                                                                                  0.3s
+=> exporting to image                                                                                                                                                      0.2s
+=> => exporting layers                                                                                                                                                     0.1s
+=> => writing image sha256:eee2e785b211150dab8e287f2154063ba2980b287412cfaf372c11db210718f8                                                                                0.0s
+=> => naming to docker.io/library/my-nginx-custom
 ```
 
 **실행 명령**
@@ -523,9 +555,20 @@ docker build -t 이미지명 .
 docker run -d -p 8080:80 이미지명
 ```
 ```
-결과값 입력
+leeeunbin2199174@c3r2s7 my-nginx % docker run -d -p 8080:80 --name my-web my-nginx-custom
+6164e947a696048126b8d30531cc9561d7e67a8d23061d988ca81291cd3eb894
 ```
 <img width="386" height="181" alt="image" src="https://github.com/user-attachments/assets/f09a14f1-171a-4483-9038-9a8de6b60820" />
+
+**확인 방법**
+```bash
+docker ps
+```
+```
+leeeunbin2199174@c3r2s7 my-nginx % docker ps
+CONTAINER ID   IMAGE             COMMAND                   CREATED          STATUS          PORTS                                     NAMES
+6164e947a696   my-nginx-custom   "/docker-entrypoint.…"   21 seconds ago   Up 20 seconds   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   my-web
+```
 
 ---
 
