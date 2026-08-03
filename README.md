@@ -689,7 +689,7 @@ git config --global user.email "이메일"
 ```
 ```
 leeeunbin2199174@c3r7s7 ~ % git config --global user.name "이은빈"
-leeeunbin2199174@c3r7s7 ~ % git confog --global user.email "leeeunbin219@gmail.com"
+leeeunbin2199174@c3r7s7 ~ % git config --global user.email "leeeunbin219@gmail.com"
 ```
 
 **기본 브랜치 설정**
