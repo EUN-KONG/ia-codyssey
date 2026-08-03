@@ -684,11 +684,12 @@ leeeunbin2199174@c3r2s7 ~ % docker exec volume-test2 cat /data/test.txt
 
 **Git 사용자 정보 설정**
 ```bash
-$ git config --global user.name "이름"
-$ git config --global user.email "이메일"
+git config --global user.name "이름"
+git config --global user.email "이메일"
 ```
 ```
-결과값 입력
+leeeunbin2199174@c3r7s7 ~ % git config --global user.name "이은빈"
+leeeunbin2199174@c3r7s7 ~ % git confog --global user.email "leeeunbin219@gmail.com"
 ```
 
 **기본 브랜치 설정**
@@ -696,7 +697,7 @@ $ git config --global user.email "이메일"
 git config --global init.defaultBranch main
 ```
 ```
-결과값 입력
+leeeunbin2199174@c3r7s7 ~ % git config --global init.defaultBranch main
 ```
 
 **설정 확인**
@@ -704,7 +705,11 @@ git config --global init.defaultBranch main
 git config --list
 ```
 ```
-결과값 입력
+leeeunbin2199174@c3r7s7 ~ % git config --list
+credential.helper=osxkeychain
+user.name=이은빈
+user.email=leeeunbin219@gmail.com
+init.defaultbranch=main
 ```
 
 **GitHub 저장소 연동 확인**
