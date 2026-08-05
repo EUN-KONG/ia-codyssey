@@ -689,7 +689,7 @@ git config --global user.email "이메일"
 ```
 ```
 leeeunbin2199174@c3r7s7 ~ % git config --global user.name "이은빈"
-leeeunbin2199174@c3r7s7 ~ % git config --global user.email "leeeunbin219@gmail.com"
+leeeunbin2199174@c3r7s7 ~ % git config --global user.email "**********@gmail.com"
 ```
 
 **기본 브랜치 설정**
@@ -708,7 +708,7 @@ git config --list
 leeeunbin2199174@c3r7s7 ~ % git config --list
 credential.helper=osxkeychain
 user.name=이은빈
-user.email=leeeunbin219@gmail.com
+user.email=**********@gmail.com
 init.defaultbranch=main
 ```
 
@@ -717,12 +717,36 @@ init.defaultbranch=main
 git remote -v
 ```
 ```
-결과값 입력
+leeeunbin2199174@c6r1s5 codyssey1_2 % git remote -v
+origin  https://github.com/EUN-KONG/codyssey1_2.git (fetch)
+origin  https://github.com/EUN-KONG/codyssey1_2.git (push)
 ```
 
 **연동 증거**
-```
-스크린샷 첨부
-```
+<img width="670" height="800" alt="image" src="https://github.com/user-attachments/assets/ab760782-0068-4f2c-a174-15c57d9a417f" />
+<img width="1225" height="289" alt="image" src="https://github.com/user-attachments/assets/1c329d4b-203b-4295-bb1c-c88068d1cf92" />
 
 ## 5. 트러블슈팅 2건 이상(문제 → 원인 가설 → 확인 → 해결/대안)
+
+---
+
+### 🔴 트러블슈팅 #1 - 폴더 복사 오류
+
+| 단계 | 내용 |
+|------|------|
+| 🔍 문제 | cp 명령어 실행 시 오류 발생 |
+| 💭 원인 가설 | cp는 파일만 복사 가능할 것이다 |
+| ✅ 확인 | test는 폴더라 일반 cp 사용 불가 확인 |
+| 🔧 해결 | cp -r 옵션으로 해결 |
+
+---
+
+### 🔴 트러블슈팅 #2 - HTML 저장 오류
+
+| 단계 | 내용 |
+|------|------|
+| 🔍 문제 | TextEdit으로 저장 시 HTML이 텍스트로 저장됨 |
+| 💭 원인 가설 | TextEdit이 RTF 모드로 동작할 것이다 |
+| ✅ 확인 | 기본 설정이 RTF 모드로 되어 있음 확인 |
+| 🔧 해결 | nano 편집기로 재작성하여 해결 |
+
