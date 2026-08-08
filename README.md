@@ -60,6 +60,7 @@ ieunbin@eunbin-ui-MacBookAir ~ % pwd
 **목록 확인 (숨김 파일 포함)**
 ```bash
 ls -a
+# 옵션 `-a`는 all을 의미한다.
 ```
 ```
 ieunbin@eunbin-ui-MacBookAir ~ % ls -a
@@ -98,6 +99,7 @@ ieunbin@eunbin-ui-MacBookAir ~ %
 **폴더 복사**
 ```bash
 cp -r 원본폴더 복사할폴더
+# 옵션 `-r`은 폴더 안까지 전부 복사.
 ```
 ```
 ieunbin@eunbin-ui-MacBookAir ~ % cp -r test test2 
@@ -112,11 +114,13 @@ Documents	Movies		Postman		test
 mv 원본폴더 이동/이름변경할폴더
 ```
 ```
+#이름변경
 ieunbin@eunbin-ui-MacBookAir ~ % mv test2 test3
 ieunbin@eunbin-ui-MacBookAir ~ % ls
 Applications	Downloads	Music		Public		test3
 Desktop		Library		Pictures	nextjs-blog
 Documents	Movies		Postman		test
+#이동
 ieunbin@eunbin-ui-MacBookAir ~ % mv test test3  
 ieunbin@eunbin-ui-MacBookAir ~ % ls
 Applications	Downloads	Music		Public
@@ -130,6 +134,7 @@ test
 **폴더 삭제**
 ```bash
 rm -r 폴더명
+# 옵션 `-r`은 폴더 안까지 전부 삭제.
 ```
 ```
 ieunbin@eunbin-ui-MacBookAir test3 % rm -r test
@@ -166,6 +171,7 @@ ieunbin@eunbin-ui-MacBookAir ~ % cat file
 **권한 확인**
 ```bash
 ls -l 파일명
+# 옵션 `-l`은 파일의 크기, 수정 날짜 등 상세 정보 표시.
 ```
 ```
 ieunbin@eunbin-ui-MacBookAir ~ % mkdir directory
@@ -360,6 +366,7 @@ docker run 이미지명
 ```
 ieunbin@eunbin-ui-MacBookAir ~ % docker run ubuntu
 ieunbin@eunbin-ui-MacBookAir ~ % docker run -d ubuntu sleep 300
+# `-d`는 백그라운드 실행. 백그라운드 실행을 해야 터미널을 바로 사용할 수 있음.
 ```
 <img width="972" height="147" alt="image" src="https://github.com/user-attachments/assets/0cf0e641-ebf2-409e-ad15-80f7ca106c85" />
 
@@ -386,6 +393,7 @@ great_ritchie
 **전체 컨테이너 목록**
 ```bash
 docker ps -a
+# `-a`는 종료된 컨테이너까지 전부 보기.
 ```
 ```
 ieunbin@eunbin-ui-MacBookAir ~ % docker ps -a
@@ -456,6 +464,8 @@ docker run -it ubuntu
 ```
 ieunbin@eunbin-ui-MacBookAir ~ % docker run -it ubuntu
 root@c30ca9fa3f33:/#
+# `-i` → 입력을 받을 수 있게 함. `-t` → 터미널 형태로 연결
+# root는 관리자 계정을 뜻함.
 ```
 
 **ubuntu 내부 명령 수행**
@@ -469,6 +479,7 @@ bin   dev  home  lib64  mnt  proc  run   srv  tmp  var
 boot  etc  lib   media  opt  root  sbin  sys  usr
 root@c30ca9fa3f33:/# echo "hello"
 hello
+# `echo` → 문자열 출력 명령어
 ```
 
 **컨테이너 종료/유지(attach vs exec)차이**
@@ -517,12 +528,22 @@ leeeunbin2199174@c3r2s7 my-nginx % nano index.html
 ```
 leeeunbin2199174@c3r2s7 my-nginx % touch Dockerfile
 leeeunbin2199174@c3r2s7 my-nginx % nano Dockerfile
+# FROM → 어떤 이미지를 바탕으로 만들지 지정
+  NGINX가 들어있는 이미지를 기본으로 가져오는 것.
+# COPY <호스트 경로> <컨테이너 경로>
+  내가 직접 만든 내용으로 덮어씌워져서, 웹에 접속했을 때 내가 만든 화면이 뜨게 됨.
+# EXPOSE 80 → 이 컨테이너가 80번 포트를 사용한다는 것을 표시
+  HTTP 웹 사이트는 기본적으로 80번 포트를 사용하기로 국제 약속함.
 ```
 <img width="1398" height="404" alt="image" src="https://github.com/user-attachments/assets/2404ceff-592b-4ace-b01b-5c4c041dc5c0" />
 
 **빌드 명령**
 ```bash
 docker build -t 이미지명 .
+# `-t`(Tag): 생성될 이미지에 이름을 붙이겠다는 옵션
+  :v1처럼 버전을 붙이지 않으면 기본적으로 :latest 태그가 자동으로 붙는다
+# . (맨 뒤의 마침표): 현재 작업 중인 디렉토리(경로)
+# 현제 my-nginx라는 폴더의 독커파일을 읽어서 my-nginx-custom이라는 도커 이미지를 만들어라
 ```
 ```
 leeeunbin2199174@c3r2s7 my-nginx % docker build -t my-nginx-custom .
@@ -565,6 +586,12 @@ leeeunbin2199174@c3r2s7 my-nginx % docker build -t my-nginx-custom .
 **실행 명령**
 ```bash
 docker run -d -p 8080:80 이미지명
+# `-d`는 백그라운드 실행
+# -p 외부포트:내부포트
+  8080 (앞): 내가 내 컴퓨터 브라우저에서 접속할 포트 번호
+  80 (뒤): 컨테이너 내부의 NGINX가 실제로 듣고 있는 포트 번호
+  브라우저에 http://localhost:8080으로 접속하면, 도커가 이를 컨테이너 안의 80번 포트로 전달해 줌.
+# `--name`은 새로 실행할 컨테이너에 내가 원하는 이름을 지정
 ```
 ```
 leeeunbin2199174@c3r2s7 my-nginx % docker run -d -p 8080:80 --name my-web my-nginx-custom
@@ -583,6 +610,7 @@ docker ps
 leeeunbin2199174@c3r2s7 my-nginx % docker ps
 CONTAINER ID   IMAGE      COMMAND                   CREATED              STATUS              PORTS                                     NAMES
 82e0875c8d46   my-nginx   "/docker-entrypoint.…"   About a minute ago   Up About a minute   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   my-cuntainer
+# 외부 포트 8080을 내부 포트 80으로 연결
 ```
 
 **curl 접속 확인**
@@ -626,6 +654,7 @@ local     my-volume
 **볼륨 연결 후 컨테이너 실행**
 ```bash
 docker run -v 볼륨명:/경로 이미지명
+# `-v` 컨테이너를 지워도 데이터는 컴퓨터에 계속 남겨둠
 ```
 ```
 leeeunbin2199174@c3r2s7 ~ % docker run -d -p 8090:80 --name volume-test -v my-volume://data my-nginx
@@ -635,6 +664,9 @@ ece2beb9990e17784ca60a31745fd0d816ce79e13b57a0e91c4d95d04afdf76a
 **컨테이너 내부 들어가기**
 ```bash
 docker exec -it 컨테이너명 sh
+# `-i` → 입력을 받을 수 있게 함. `-t` → 터미널 형태로 연결
+# `sh` → 컨테이너 내부로 들어가 리눅스 명령어를 입력할 수 있는 명령창(쉘)을 띄우는 프로그램
+
 ```
 ```
 leeeunbin2199174@c3r2s7 ~ % docker exec -it volume-test sh
@@ -644,6 +676,7 @@ leeeunbin2199174@c3r2s7 ~ % docker exec -it volume-test sh
 **컨테이너 안에 테스트 파일 만들기**
 ```bash
 echo "내용" > 경로/파일명
+# `>`는 기존 내용을 완전히 지우고 새 내용으로 덮어씀.
 ```
 ```
 / # echo "볼륨 테스트 데이터" > /data/test.txt
@@ -726,7 +759,51 @@ origin  https://github.com/EUN-KONG/codyssey1_2.git (push)
 <img width="670" height="800" alt="image" src="https://github.com/user-attachments/assets/ab760782-0068-4f2c-a174-15c57d9a417f" />
 <img width="1225" height="289" alt="image" src="https://github.com/user-attachments/assets/1c329d4b-203b-4295-bb1c-c88068d1cf92" />
 
-## 5. 트러블슈팅 2건 이상(문제 → 원인 가설 → 확인 → 해결/대안)
+## 10. 과제 목표
+### -절대 경로와 상대 경로
+**1. 절대 경로**
+
+* **개념**: 최상위 루트 디렉토리(`/` 또는 `C:\`)를 기준으로 파일의 전체 위치를 처음부터 끝까지 지정하는 방식입니다.
+* **특징**: 현재 작업 위치가 어디이든 관계없이 항상 동일한 파일/폴더를 가리킵니다.
+* **사용 예시**:
+  * **Linux / macOS / Docker**: `/usr/share/nginx/html/index.html`
+  * **Windows**: `C:\Users\Username\Documents\file.txt`
+
+**2. 상대 경로**
+
+* **개념**: **현재 내가 위치한 디렉토리**를 기준으로 목적지 파일의 위치를 지정하는 방식입니다.
+* **특징**: 프로젝트 폴더 위치가 이동되거나 다른 환경으로 옮겨져도 내부 구조가 동일하다면 경로가 유지됩니다.
+* **주요 기호**:
+  * `.` : 현재 위치한 디렉토리
+  * `..` : 상위(부모) 디렉토리
+* **사용 예시**:
+  * `./index.html` : 현재 디렉토리 안에 있는 `index.html`
+  * `../data/test.txt` : 상위 디렉토리로 이동한 후 `data` 폴더 안의 `test.txt`
+
+---
+
+### -파일 권한
+**1. 권한의 종류 (r / w / x)**
+
+각 파일과 디렉토리는 **읽기(r)**, **쓰기(w)**, **실행(x)** 3가지 권한으로 제어되며, 각 권한은 고유의 **숫자 점수**를 가집니다.
+
+| 권한 | 기호 | 의미 | 숫자 값 |
+| :--- | :---: | :--- | :---: |
+| **Read** | `r` | 읽기 | **4** |
+| **Write** | `w` | 쓰기 | **2** |
+| **eXecute** | `x` | 실행 | **1** |
+| **None** | `-` | 권한 없음 | **0** |
+
+ d-       rwx    rwx   rwx /r
+(항목종류) (소유자)(그룹)(기타)
+
+| 표기 | 소유자 (User) | 그룹 (Group) | 기타 사용자 (Other) | 주요 용도 |
+| :---: | :---: | :---: | :---: | :--- |
+| **`755`** | `rwx` (7) | `r-x` (5) | `r-x` (5) | 실행 스크립트, 웹 서버 폴더 |
+| **`644`** | `rw-` (6) | `r--` (4) | `r--` (4) | 일반 텍스트 파일, 이미지 파일 |
+| **`777`** | `rwx` (7) | `rwx` (7) | `rwx` (7) | 모든 사용자 풀 권한 |
+
+## 11. 트러블슈팅 2건 이상(문제 → 원인 가설 → 확인 → 해결/대안)
 
 ---
 
